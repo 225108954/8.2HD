@@ -1,106 +1,51 @@
-# Split-Deal
-This repository contains the code written for Split Deal, a deal sharing platform. Its going to use Vanilla JS and node.
+## 🐳 How to Run the Dockerised Container
 
-A RESTful API for group buying deals with JWT authentication
+Follow the instructions below to build and run this application inside a Docker container for assessment.
 
-Features
-✅ JWT Authentication (/register, /login)
-✅ Group Management (Create groups, update status)
-✅ Role-Based Access Control (Admin/User)
-✅ MongoDB Data Models (Users, Groups, Deals)
+---
 
-Tech Stack
-Backend: Node.js, Express
-Database: MongoDB
-Authentication: JWT, Bcrypt
-Testing: Postman
-Frontend: Vanilla JS
+### 🛠️ Build the Docker Image
 
-Setup
-Clone the repo
+Make sure you're in the root directory of the project and Docker is installed and running.
 
-git clone https://github.com/vaghelaparth5/Split-Deal.git
-cd Split-Deal
+```bash
+docker build -t splitdeal-app .
+```
 
-Install dependencies:
-npm install
+> This command builds the Docker image using the Dockerfile in the root folder.
 
-Configure environment variables:
-Create a .env file (see Environment Variables).
+---
 
-Run the server:
-npm run start
+### 🚀 Run the Container
 
-API Endpoints
+You must provide a `.env` file with all required environment variables like `MONGODB_URI`, `JWT_SECRET`, etc.
 
-Authentication
-Endpoint	Method	Description	Request Body Example
-/api/auth/register	POST	Register a new user	{ "user_email": "test@example.com", "user_password": "123456", "name": "John Doe", "phone_number": "+1234567890" }
-/api/auth/login	POST	Login and get JWT token	{ "user_email": "test@example.com", "user_password": "123456" }
+```bash
+docker run -p 3000:3000 --env-file .env splitdeal-app
+```
 
-Group Management (Requires JWT)
-Endpoint	Method	Description	Request Body Example
-/api/groups/create-group	POST	Create a new group	{ "dealTitle": "50% Off Gym Membership", "storeLocation": "Sydney", ... }
-/api/groups/update-group-status/:id	PUT	Update group status (Admin-only)	{ "status": "completed" }
+> This exposes the app on your local machine at `http://localhost:3000`.
 
-Testing
-Manual Testing in Postman
+---
 
-Testing command for jest 
+### 🌐 Access the Application
 
-🔐 How to Use Authentication
-Go to the Login Page
+- App home page:  
+  [http://localhost:3000](http://localhost:3000)
 
-Navigate to /login to access the login screen.
+- Student Identity Route:  
+  [http://localhost:3000/api/student](http://localhost:3000/api/student)
 
-Enter your registered email and password.
+---
 
-New User? Register First
+### 📦 Example Output of `/api/student`
 
-Click on “Sign Up” or go to /register.
+```json
+{
+  "name": "Gaurav Myana",
+  "studentId": "225108954"
+}
+```
 
-Fill in your name, email, and password.
-
-Submit to create a new account.
-
-Access Protected Pages
-
-Once logged in, you’ll be redirected to your profile or dashboard.
-
-Now you can access pages like /profile, /chatbot, etc.
-
-Logout Anytime
-
-Click the “Logout” button in the navbar to securely log out.
-npm run test
-
-To run Cypress 
-npx cypress open
-
-
-🤖 How to Use the Chatbot
-Login Required
-
-Users must be logged in to access the chatbot.
-
-Navigate to the Chatbot Page
-
-Go to the /chatbot route via the navbar or directly.
-
-Submit a Query
-
-Users type their message or question in the input field.
-
-Press “Send” to submit it.
-
-What Happens Next
-
-The submitted queries are stored or sent to our team.
-
-Our 6-member support team receives the queries and responds manually.
-
-Note
-
-Responses are not instant. Users will be contacted later with a reply.
 
 

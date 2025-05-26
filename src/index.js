@@ -79,6 +79,13 @@ app.use("/api/deal", dealRoutes);
 app.use("/api/group", groupRoutes);
 app.use("/api/groupMember", groupMemberRoutes);
 app.use("/api/user", userRoutes);
+app.get("/api/student", (req, res) => {
+    console.log(" /api/student called");
+  res.json({
+    name: "Gaurav Myana",
+    studentId: "225108954"  
+  });
+});
 
 mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
