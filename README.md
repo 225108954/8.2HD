@@ -4,6 +4,23 @@ Follow the instructions below to build and run this application inside a Docker 
 
 ---
 
+### ✅ Prerequisites
+
+- Docker Desktop must be installed and running.
+- Clone this repository and navigate to the project root.
+- Create a `.env` file with the following values:
+
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+SMTP_HOST=smtp.example.com
+SMTP_PORT=2525
+SMTP_USER=your_smtp_user
+SMTP_PASS=your_smtp_pass
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+---
+
 ### 🛠️ Build the Docker Image
 
 Make sure you're in the root directory of the project and Docker is installed and running.
